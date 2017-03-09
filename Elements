@@ -1,0 +1,43 @@
+package BinaryTree;
+
+public class Element {
+double value;
+Element rightWing;
+Element leftWing;
+
+public Element (double value){
+	this.value = value;
+}
+
+public void addOneMore (double newElement) {
+	
+	if (newElement >= this.value) 
+		if (this.rightWing == null)
+			this.rightWing = new Element (newElement);
+		else
+			this.rightWing.addOneMore(newElement);
+	else 
+		if (this.leftWing == null)
+			this.leftWing = new Element (newElement);
+		else
+			this.leftWing.addOneMore(newElement);  
+}
+public boolean findElement (double element) {
+boolean flag;
+if (element == this.value)
+	flag = true;
+else
+	if (element > this.value) 
+		if (this.rightWing == null)
+			flag = false;
+		else
+			flag = this.rightWing.findElement(element);
+	else 
+		if (this.leftWing == null)
+			flag = false;
+		else
+			flag = this.leftWing.findElement(element);
+return flag;
+}
+	
+}
